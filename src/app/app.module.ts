@@ -3,6 +3,8 @@ import { BrowserModule, provideClientHydration, withEventReplay } from '@angular
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SharedModule } from './web/shared/shared.module';
+import { AppMaterialModule } from './web/shared/app-material/app-material.module';
 
 @NgModule({
   declarations: [
@@ -10,10 +12,9 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [
-    provideClientHydration(withEventReplay())
+    AppRoutingModule,
+    SharedModule,
+    AppMaterialModule,
   ],
   bootstrap: [AppComponent]
 })

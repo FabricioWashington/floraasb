@@ -1,0 +1,116 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg shadow-sm sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="#"><img src="assets/logo.jpeg" alt="Flora ASB" /></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="#servicos">Serviços</a></li>
+        <li class="nav-item"><a class="nav-link" href="#localizacao">Localização</a></li>
+        <li class="nav-item"><a class="nav-link" href="#sobre">Sobre Nós</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+        <li class="nav-item"><a class="nav-link" href="#fotos">Fotos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#orcamento">Orçamento</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="green-section">
+  <div class="container">
+    <!-- Carrossel dinâmico -->
+    <div id="mediaCarousel" class="carousel slide mt-4" data-bs-ride="carousel" data-bs-touch="true">
+      <div class="carousel-inner">
+
+        <div *ngFor="let item of media; let i = index" class="carousel-item" [class.active]="i === 0">
+          <ng-container [ngSwitch]="item.type">
+            <!-- Imagem -->
+            <img *ngSwitchCase="'image'" [src]="item.src" class="d-block mx-auto rounded-4 shadow-lg"
+              style="max-width: 500px; height: 400px; object-fit: cover;" alt="Imagem {{ i + 1 }}" />
+
+            <!-- Vídeo -->
+            <video *ngSwitchCase="'video'" [src]="item.src" autoplay muted loop playsinline
+              class="d-block mx-auto rounded-4 shadow-lg" style="max-width: 500px; height: 400px; object-fit: cover;">
+            </video>
+          </ng-container>
+        </div>
+
+      </div>
+
+      <!-- Setas visíveis apenas no desktop -->
+      <button class="carousel-control-prev d-none d-md-flex" type="button" data-bs-target="#mediaCarousel"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next d-none d-md-flex" type="button" data-bs-target="#mediaCarousel"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+
+    <!-- Sobre Nós -->
+    <section id="sobre" class="mb-5">
+      <h2>Sobre Nós</h2>
+      <p>Cultivar o futuro é o que nos move. Somos apaixonados pela natureza e dedicamos nossa jornada à produção e
+        venda de mudas nativas e florestais, contribuindo para um mundo mais verde e equilibrado.
+
+        Trabalhamos com espécies classificadas no NCM 06029089, atendendo consumidores finais que, assim como nós,
+        acreditam no poder de transformar o ambiente por meio do plantio.
+
+        Cada muda que entregamos carrega cuidado, conhecimento e um propósito: restaurar, preservar e recomeçar. Em cada
+        pedido, nos dedicamos a encontrar a melhor solução, com carinho e compromisso com o planeta.</p>
+    </section>
+
+    <!-- Serviços -->
+    <section id="servicos" class="row text-center fs-4">
+      <div class="col-md-6 mb-3">
+        <div class="card">
+          <img src="assets/img10.webp" class="card-img-top fs-3 text-gray" alt="Reflorestamento">
+          <div class="card-body">Reflorestamento</div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <div class="card">
+          <img src="assets/img3.jpeg" class="card-img-top fs-3 text-gray" alt="Mudas Nativas">
+          <div class="card-body">Mudas Nativas</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Botão Orçamento -->
+    <div class="text-center my-4" id="orcamento">
+      <a class="btn btn-orcamento" href="https://wa.me/5566996232903" target="_blank" rel="noopener noreferrer">
+        Solicitar Orçamento
+      </a>
+    </div>
+
+    <!-- Contato -->
+    <section id="contato">
+      <h3>Contato</h3>
+      <p>Entre em contato conosco pelo telefone (66) 99623-2903</p>
+      <form>
+        <input type="text" class="form-control mb-2" placeholder="Nome" [(ngModel)]="nome" name="nome" required>
+        <input type="email" class="form-control mb-2" placeholder="E-mail" [(ngModel)]="email" name="email" required>
+        <input type="tel" class="form-control mb-2" placeholder="Telefone" [(ngModel)]="telefone" name="telefone"
+          required>
+        <textarea class="form-control mb-2" rows="4" placeholder="Mensagem..." [(ngModel)]="mensagem" name="mensagem"
+          required></textarea>
+        <button (click)="enviarEmail()" type="submit" class="btn btn-success">Enviar</button>
+      </form>
+    </section>
+  </div>
+</div>
+
+<!-- Localização -->
+<section id="localizacao" class="green-section">
+  <div class="container">
+    <h3>Localização</h3>
+    <p>Estamos localizados na Avenida Primeira Avenida, S/N - Zona Rural.</p>
+    <iframe class="rounded"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.28452797448!2d-55.25570592495464!3d-11.01726598914653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9307eff7e617bdfb%3A0x1d1f4815ac19cad5!2sFLORA%20ASB%20VIVEIRO%20DE%20MUDAS!5e0!3m2!1spt-BR!2sbr!4v1744769674261!5m2!1spt-BR!2sbr"
+      width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+</section>
